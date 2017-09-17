@@ -18,13 +18,9 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=appdb
-    ports:
-      - 3306
   php:
     # image: php:7.1-fpm # without any extensions
     image: "nanoninja/php-fpm"
-    ports:
-      - 9000
     restart: always
     volumes:
       - ./app:/var/www/app
