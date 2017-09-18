@@ -1,5 +1,9 @@
 # docker_nginx-phpfpm-mysql-template
 
+## update: 
+* working php-fpm `error_log` (logs/nginx_error.log)
+* env variables between containers (`shared.env`, check `app/index.php`)
+
 ## Usage:
 * run `docker-compose up`
 * **index.html** -> `http://127.0.0.1:8080/`

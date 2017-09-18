@@ -8,6 +8,8 @@ services:
     volumes: 
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       - ./app:/var/www/app
+      - ./logs/nginx_access.log:/var/log/nginx/access.log
+      - ./logs/nginx_error.log:/var/log/nginx/error.log
     links:
       - php
       - mysql
@@ -15,12 +17,12 @@ services:
     image: "mysql"
     volumes:
       - ./mysql:/var/lib/mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=appdb
+    env_file: ./shared.env
   php:
     # image: php:7.1-fpm # without any extensions
     image: "nanoninja/php-fpm"
     restart: always
     volumes:
       - ./app:/var/www/app
+      - ./php/php-fpm.conf:/usr/local/etc/php-fpm.d/zz-log.conf
+    env_file: ./shared.env
