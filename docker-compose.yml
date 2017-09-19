@@ -26,3 +26,4 @@ services:
       - ./app:/var/www/app
       - ./php/php-fpm.conf:/usr/local/etc/php-fpm.d/zz-log.conf
     env_file: ./shared.env
+    user: www-data
